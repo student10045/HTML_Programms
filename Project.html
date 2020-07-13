@@ -1,0 +1,156 @@
+<html><head> 
+  <script> 
+function setfocus() { 
+document.calcform.dec.focus(); 
+} 
+function Convert_Bin() 
+{ 
+num = document.calcform.bin.value; 
+if( num=="" ) 
+return; 
+num = parseInt(num,2); 
+document.calcform.oct.value = num.toString(8); 
+document.calcform.dec.value = num.toString(10); 
+num = num.toString(16); 
+document.calcform.hex.value = num.toUpperCase(); 
+} 
+function Convert_Oct() 
+{ 
+num = document.calcform.oct.value; 
+if( num=="" ) 
+return; 
+num = parseInt(num,8); 
+document.calcform.bin.value = num.toString(2); 
+document.calcform.dec.value = num.toString(10); 
+num = num.toString(16); 
+document.calcform.hex.value = num.toUpperCase(); 
+} 
+function Convert_Dec() 
+{ 
+num = document.calcform.dec.value; 
+if( num=="" ) 
+return; 
+num = parseInt(num,10); 
+if( num<0 ) { 
+if( num>=-32768 ) 
+num+=65536; 
+else if( num>=-Math.pow(2,31)) 
+num+=Math.pow(2,32); 
+else if( num>=-Math.pow(2,63) ) 
+num+=Math.pow(2,64); 
+} 
+document.calcform.bin.value = num.toString(2); 
+document.calcform.oct.value = num.toString(8);
+num = num.toString(16); 
+document.calcform.hex.value = num.toUpperCase(); 
+} 
+function Convert_Hex() 
+{ 
+num = document.calcform.hex.value; 
+if( num=="" ) 
+return; 
+num = parseInt(num,16); 
+document.calcform.bin.value = num.toString(2); 
+document.calcform.oct.value = num.toString(8); 
+document.calcform.dec.value = num.toString(10); 
+} 
+function clr() 
+{ 
+document.getElementById("bin").value = "" 
+document.getElementById("oct").value = "" 
+document.getElementById("dec").value = "" 
+document.getElementById("hex").value = "" 
+} 
+</script> 
+  <style> 
+body { 
+background-image: url('bg.jpeg'); 
+background-repeat: no-repeat; 
+background-size: cover; 
+} 
+.title{ 
+margin-top: 345px; 
+margin-left: 345px; 
+margin-bottom: 10px; 
+text-align:center; 
+width: 240px; 
+color:black; 
+border: solid black 5px; 
+} 
+input[type="button"] 
+{ 
+background-color:white; 
+color: black; 
+width:100% 
+} 
+input[type="text"] 
+{ 
+background-color:white; 
+width:100% 
+} 
+input[type="label"] 
+{ 
+background-color:white; 
+width:100% 
+} 
+</style> 
+ </head> 
+ <body> 
+  <br>
+  <br>
+  <br>
+  <br> 
+  <form name="calcform" autocomplete="off"> 
+   <table border="1" align="center" bgcolor="black"> 
+    <tbody> 
+     <tr> 
+      <td colspan="6" background="t00.png">
+       <center>
+        <b><i>SIMPLE BASE CONVERTOR</i></b>
+        <center></center>
+       </center></td> 
+     </tr> 
+     <tr> 
+      <td colspan="3"><input type="text" id="bin"></td> 
+      <td background="t01.jpg">
+       <center>
+        <b><i>Binary</i></b>
+        <c enter></c>
+       </center></td> 
+      <td colspan="2"><input type="button" value="Solve" onclick="Convert_Bin()"> </td> 
+     </tr> 
+     <tr> 
+      <td colspan="3"><input type="text" id="oct"></td> 
+      <td background="t06.jpg">
+       <center>
+        <b><i>Octal</i></b>
+        <ce nter></ce>
+       </center></td> 
+      <td colspan="2"><input type="button" value="Solve" onclick="Convert_Oct()"> </td> 
+     </tr> 
+     <tr> 
+      <td colspan="3"><input type="text" id="dec"></td> 
+      <td background="t03.jpg">
+       <center>
+        <b><i>Decimal</i></b> 
+        <center></center>
+       </center></td> 
+      <td colspan="2"><input type="button" value="Solve" onclick="Convert_Dec()"> </td> 
+     </tr> 
+     <tr> 
+      <td colspan="3"><input type="text" id="hex"></td> 
+      <td background="t08.jpg">
+       <center>
+        <b><i>Hexadecimal</i> </b>
+        <center></center>
+       </center></td> 
+      <td colspan="2"><input type="button" value="Solve" onclick="Convert_Hex()"> </td> 
+     </tr> 
+     <tr> 
+      <td colspan="6"><input type="button" value="Reset" onclick="clr()"> </td> 
+     </tr> 
+    </tbody> 
+   </table> 
+  </form> 
+ 
+</body></html>
